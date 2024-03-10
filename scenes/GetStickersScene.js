@@ -3,6 +3,7 @@ import { doneOrCancel, next } from "../utilities/Markup.js";
 import { deleteSupply, getStickersForTrbx, getTrbxInfo } from "../controllers/WildberriesController.js";
 import fs from 'fs';
 import { erase } from "../utilities/Excel.js";
+import { getSupply } from "../model/SuppliesModel.js";
 
 export const getStickers = new Scenes.BaseScene('getStickers');
 

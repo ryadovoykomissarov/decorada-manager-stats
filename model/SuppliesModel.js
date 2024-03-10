@@ -33,3 +33,9 @@ export const getSupply = async (id) => {
     let supply = await database.get(supplyId);
     return supply;
 }
+
+export const createSupply = async (supply) => {
+    let database = suppliesStorage;
+
+    const response = await database.insert(supply).catch((e) => console.error('error' + e));
+}
