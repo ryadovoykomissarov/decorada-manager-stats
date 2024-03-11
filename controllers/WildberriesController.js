@@ -103,7 +103,7 @@ export const patchSupplyWithOrders = async (supplyId, orderId) => {
 }
 
 export const postTrbx = async (supplyId, amount) => {
-    let trbxIds;
+    let trbxIds = [];
 
     // const config = {
     //     headers: {
@@ -123,13 +123,12 @@ export const postTrbx = async (supplyId, amount) => {
     //     });
 
 
-    await axios.post('http://localhost:3000/trbx', {
-        amount: amount
-    }).then(function (response) {
-        trbxIds = response.data.trbxIds;
-    }).catch(function (error) {
-        console.log(error);
-    }); 
+    for (let i = 0; i < parseInt(amount); i ++) {
+        let number = 1234567;
+        number+=1;
+        let trbx = `WB-TRBX-${number}`
+        trbxIds.push(trbx);
+    }
 
     return trbxIds;
 }
@@ -183,16 +182,7 @@ export const postSupply = async (supplyName) => {
     //     }).catch(function (error) {
     //         console.log(error);
     //     });
-
-    await axios.post('http://localhost:3000/supplies', {
-        name: supplyName
-    }).then(function (response) {
-        supplyId = response.data.id;
-    }).catch(function (error) {
-        console.log(error);
-    }); 
-
-    return supplyId;
+    return "WB-GI-1234567";
 }
 
 export const getNewOrders = async () => {

@@ -1,0 +1,10 @@
+{
+    "bot_token": "6778620514:AAEV8vgFtR2usuNpyhnTOFMzp6_lx--NbEA",
+    "bot_link": "https://api.telegram.org/bot6778620514:AAEV8vgFtR2usuNpyhnTOFMzp6_lx--NbEA/sendPhoto",
+    "chat_id": "-1001999915316",
+    "wildberries_token": "eyJhbGciOiJFUzI1NiIsImtpZCI6IjIwMjMxMjI1djEiLCJ0eXAiOiJKV1QifQ.eyJlbnQiOjEsImV4cCI6MTcyMzYwNzkyMSwiaWQiOiJlNGY4MWUyMC01NTU5LTQ2ZGEtOTA0OC00MzIxMWIwYzcxYjIiLCJpaWQiOjUzODE3NTY2LCJvaWQiOjIyMjEzNiwicyI6NTIsInNpZCI6IjUzNTlmM2FhLWNlNWUtNDA4Ni04MDliLTcxMDQ3NmIzN2QxYyIsInQiOmZhbHNlLCJ1aWQiOjUzODE3NTY2fQ.iO_7EsuWLLFZAWJitPl-0d6xxE_s-kmcbD3ENg2-2A79hf1oQcxwV40_rvKkHY2xNZOfZchNUiDYIbctPwG-IA",
+    "couch_url": "http://admin:Vtkrjyju18!@195.58.54.86:5984",
+    "orders_storage_name": "rnd-orders",
+    "sales_storage_name": "rnd-sales",
+    "products_storage_name": "rnd-products"
+}
