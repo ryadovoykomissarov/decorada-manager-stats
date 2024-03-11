@@ -8,12 +8,13 @@ import { createSupply } from './scenes/CreateSupplyScene.js';
 import { addOrder } from './scenes/AddOrdersScene.js';
 import { createTrbx } from './scenes/CreateTrbxScene.js';
 import { getStickers } from './scenes/GetStickersScene.js';
+import { ordersToTrbxes } from './scenes/OrdersToTrbxesScene.js';
 const { enter, leave } = Scenes.Stage;
 
 let bot_token = '7185482816:AAGE3SOcno9v4ZPi2ejBmRqehPHLXWvKSz0';
 const bot = new Telegraf(bot_token);
 
-const stage = new Scenes.Stage([summaryScene, supplyInitialScene, supplyListScene, createSupply, addOrder, createTrbx, getStickers]);
+const stage = new Scenes.Stage([summaryScene, supplyInitialScene, supplyListScene, createSupply, addOrder, createTrbx, ordersToTrbxes, getStickers]);
 
 bot.start(async (ctx) => {
     await ctx.reply('Выберите функцию', onStartKeyboard);

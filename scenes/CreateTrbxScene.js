@@ -25,7 +25,7 @@ createTrbx.hears(/\b([1-9]\d{0,2}|1000)\b/, async (ctx) => {
 })
 
 createTrbx.action('s_next', async (ctx) => {
-    await ctx.scene.enter('getStickers');
+    await ctx.scene.enter('ordersToTrbxes');
 })
 
 createTrbx.leave(async (ctx) => {

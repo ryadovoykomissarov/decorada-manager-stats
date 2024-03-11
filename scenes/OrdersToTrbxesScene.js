@@ -1,6 +1,6 @@
 import { Scenes } from "telegraf";
-import { patchTrbxWithOrders } from "../controllers/WildberriesController";
-import { done } from "../utilities/Markup";
+import { patchTrbxWithOrders } from "../controllers/WildberriesController.js";
+import { done } from "../utilities/Markup.js";
 
 export const ordersToTrbxes = new Scenes.BaseScene('ordersToTrbxes');
 
