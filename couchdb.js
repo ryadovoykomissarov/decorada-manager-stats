@@ -6,7 +6,7 @@ let salesStorageName = 'rnd-sales';
 let productsStorageName = 'rnd-products';
 let suppliesStorageName = 'rnd-supplies';
 
-export const suppliesMainViewUri = 'http://admin:Vtkrjyju18!@http://195.58.54.86:5984/rada-notifications-qa-supplies/_design/supplies_doc/_view/supplies_view';
+export const suppliesMainViewUri = 'http://admin:Vtkrjyju18!@195.58.54.86:5984/rada-notifications-qa-supplies/_design/supplies_doc/_view/supplies_view';
 
 export let ordersStorage = nano.use(ordersStorageName);
 export let salesStorage = nano.use(salesStorageName);
