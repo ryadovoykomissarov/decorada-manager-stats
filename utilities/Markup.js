@@ -16,7 +16,8 @@ export const selectPeriodKeyboard = {
             [{ text: 'Сегодня', callback_data: 'p_today' }],
             [{ text: 'Неделя', callback_data: 'p_week' }],
             [{ text: 'Месяц', callback_data: 'p_month' }],
-            [{ text: '3 месяца', callback_data: 'p_max' }]
+            [{ text: '3 месяца', callback_data: 'p_max' }],
+            [{ text: 'Назад', callback_data: 'back' }]
         ],
         resize_keyboard: true,
         one_time_keyboard: true
@@ -48,7 +49,8 @@ export const supplyListParameters = {
             [{ text: 'Неделя', callback_data: 's_week' }],
             [{ text: 'Месяц', callback_data: 's_month' }],
             [{ text: '3 месяца', callback_data: 's_max' }],
-            [{ text: 'По номеру', callback_data: 's_byNumber' }]
+            [{ text: 'По номеру', callback_data: 's_byNumber' }],
+            [{ text: 'Назад', callback_data: 'back' }]
         ],
         resize_keyboard: true,
         one_time_keyboard: true
@@ -57,7 +59,8 @@ export const supplyListParameters = {
 
 export const createSupply = JSON.stringify({
     inline_keyboard: [
-        [{ text: 'Продолжить', callback_data: 's_continue' }]
+        [{ text: 'Продолжить', callback_data: 's_continue' }],
+        [{ text: 'Назад', callback_data: 'back' }]
     ]
 });
 

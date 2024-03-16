@@ -11,28 +11,30 @@ import { getStickers } from './scenes/GetStickersScene.js';
 import { ordersToTrbxes } from './scenes/OrdersToTrbxesScene.js';
 const { enter, leave } = Scenes.Stage;
 
-let bot_token = '7185482816:AAGE3SOcno9v4ZPi2ejBmRqehPHLXWvKSz0';
+let bot_token = '7129251318:AAEKbTbMOwAFDaFsCIv8H3w4E7dY_DlVFuU';
 const bot = new Telegraf(bot_token);
 
-const stage = new Scenes.Stage([summaryScene, supplyInitialScene, supplyListScene, createSupply, addOrder, createTrbx, ordersToTrbxes, getStickers]);
+const mainScene = new Scenes.BaseScene('main');
 
-bot.start(async (ctx) => {
-    await ctx.reply('Выберите функцию', onStartKeyboard);
-});
+const stage = new Scenes.Stage([mainScene, summaryScene, supplyInitialScene, supplyListScene, createSupply, addOrder, createTrbx, ordersToTrbxes, getStickers]);
 
 bot.use(session());
 bot.use(stage.middleware());
 
-bot.hears('Статистика за период', async (ctx) => {
-    await ctx.scene.enter('summaryScene');
-});
-
-bot.hears('Работа с поставками', async (ctx) => {
-    await ctx.scene.enter('supplyInitial');
-});
-
-bot.hears('Сформировать поставку', async (ctx) => {
-
+bot.start(async (ctx) => {
+    await ctx.scene.enter('main');
 });
 
 bot.launch();
+
+mainScene.enter(async (ctx) => {
+    await ctx.reply('Выберите функцию', onStartKeyboard);
+})
+
+mainScene.hears('Статистика за период', async (ctx) => {
+    await ctx.scene.enter('summaryScene');
+});
+
+mainScene.hears('Работа с поставками', async (ctx) => {
+    await ctx.scene.enter('supplyInitial');
+});

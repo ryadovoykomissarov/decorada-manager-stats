@@ -13,6 +13,10 @@ summaryScene.enter(async (ctx) => {
 
         let ordersForReport;
 
+        summaryScene.hears('Назад', async (ctx) => {
+            await ctx.scene.enter('main');
+        })
+
         summaryScene.hears('Сегодня', async (ctx) => {
             let date = await substractFromCurrent(0);
             let orders = await getOrders(date);
@@ -67,7 +71,7 @@ summaryScene.enter(async (ctx) => {
         summaryScene.leave();
     } catch (e) {
         console.log(e);
-        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь команды /start');
+        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь кнопки "Назад" или перезапустите бота командой /start', { parse_mode: 'HTML', reply_markup: options });
         await ctx.scene.leave();
     }
 });
@@ -90,7 +94,7 @@ const dispenseOrders = async (arr, ctx) => {
         return result;
     } catch (e) {
         console.log(e);
-        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь команды /start');
+        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь кнопки "Назад" или перезапустите бота командой /start', { parse_mode: 'HTML', reply_markup: options });
         await ctx.scene.leave();
     }
 }

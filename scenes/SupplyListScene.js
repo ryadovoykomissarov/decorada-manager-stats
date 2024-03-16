@@ -3,6 +3,7 @@ import { exportToExcel, supplyListParameters } from "../utilities/Markup.js";
 import { addToCurrent, substractFromCurrent } from "../utilities/DateUtil.js";
 import { getSupplies, getSupply } from "../model/SuppliesModel.js";
 import { erase, write } from "../utilities/Excel.js";
+import { deleteSupply } from "../controllers/WildberriesController.js";
 
 export const supplyListScene = new Scenes.BaseScene("supplyListScene");
 
@@ -94,10 +95,15 @@ supplyListScene.enter(async (ctx) => {
             await erase(filePath);
         })
 
+        supplyListScene.hears('Назад', async (ctx) => {
+            await deleteSupply(ctx.state.supplyId)
+            await ctx.scene.enter('main');
+        })
+
         supplyListScene.leave();
     } catch (e) {
         console.log(e);
-        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь команды /start');
+        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь кнопки "Назад" или перезапустите бота командой /start', { parse_mode: 'HTML', reply_markup: keyboard });
         await ctx.scene.leave();
     }
 

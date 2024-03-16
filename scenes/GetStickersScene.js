@@ -25,10 +25,15 @@ getStickers.enter(async (ctx) => {
         await ctx.telegram.sendMessage(ctx.chat.id, message, { parse_mode: 'HTML', reply_markup: keyboard });
     } catch (e) {
         console.log(e);
-        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь команды /start');
+        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь кнопки "Назад" или перезапустите бота командой /start', { parse_mode: 'HTML', reply_markup: keyboard });
         await ctx.scene.leave();
     }
 
+})
+
+getStickers.hears('Назад', async (ctx) => {
+    await deleteSupply(ctx.state.supplyId)
+    await ctx.scene.enter('main');
 })
 
 getStickers.action('s_done', async (ctx) => {
@@ -51,7 +56,7 @@ getStickers.action('s_done', async (ctx) => {
         await ctx.scene.leave();
     } catch (e) {
         console.log(e);
-        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь команды /start');
+        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь кнопки "Назад" или перезапустите бота командой /start', { parse_mode: 'HTML', reply_markup: keyboard });
         await ctx.scene.leave();
     }
 });
@@ -64,7 +69,7 @@ const decodeBase64 = async (base64String, filename, ctx) => {
         })
     } catch (e) {
         console.log(e);
-        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь команды /start');
+        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь кнопки "Назад" или перезапустите бота командой /start', { parse_mode: 'HTML', reply_markup: keyboard });
         await ctx.scene.leave();
     }
 
@@ -76,7 +81,7 @@ getStickers.action('s_cancel', async (ctx) => {
         await ctx.scene.leave();
     } catch (e) {
         console.log(e);
-        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь команды /start');
+        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь кнопки "Назад" или перезапустите бота командой /start', { parse_mode: 'HTML', reply_markup: keyboard });
         await ctx.scene.leave();
     }
 })

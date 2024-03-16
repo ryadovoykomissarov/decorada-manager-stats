@@ -10,7 +10,7 @@ createTrbx.enter(async (ctx) => {
         await ctx.telegram.sendMessage(ctx.chat.id, message, { parse_mode: 'HTML' });
     } catch (e) {
         console.log(e);
-        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь команды /start');
+        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь кнопки "Назад" или перезапустите бота командой /start', { parse_mode: 'HTML', reply_markup: keyboard });
         await ctx.scene.leave();
     }
 })
@@ -31,7 +31,7 @@ createTrbx.hears(/\b([1-9]\d{0,2}|1000)\b/, async (ctx) => {
         await ctx.telegram.sendMessage(ctx.chat.id, message, { parse_mode: 'HTML', reply_markup: keyboard });
     } catch (e) {
         console.log(e);
-        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь команды /start');
+        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь кнопки "Назад" или перезапустите бота командой /start', { parse_mode: 'HTML', reply_markup: keyboard });
         await ctx.scene.leave();
     }
 
@@ -42,10 +42,15 @@ createTrbx.action('s_next', async (ctx) => {
         await ctx.scene.enter('ordersToTrbxes');
     } catch (e) {
         console.log(e);
-        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь команды /start');
+        await ctx.telegram.sendMessage(ctx.chat.id, 'Произошла ошибка. Вернитесь в главное меню с помощь кнопки "Назад" или перезапустите бота командой /start', { parse_mode: 'HTML', reply_markup: keyboard });
         await ctx.scene.leave();
     }
 
+})
+
+createTrbx.hears('Назад', async (ctx) => {
+    await deleteSupply(ctx.state.supplyId)
+    await ctx.scene.enter('main');
 })
 
 createTrbx.leave(async (ctx) => {
