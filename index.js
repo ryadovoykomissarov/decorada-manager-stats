@@ -11,7 +11,7 @@ import { getStickers } from './scenes/GetStickersScene.js';
 import { ordersToTrbxes } from './scenes/OrdersToTrbxesScene.js';
 const { enter, leave } = Scenes.Stage;
 
-let bot_token = '7129251318:AAEKbTbMOwAFDaFsCIv8H3w4E7dY_DlVFuU';
+let bot_token = '7185482816:AAGE3SOcno9v4ZPi2ejBmRqehPHLXWvKSz0';
 const bot = new Telegraf(bot_token);
 
 const mainScene = new Scenes.BaseScene('main');
