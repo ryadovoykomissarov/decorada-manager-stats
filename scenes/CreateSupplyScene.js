@@ -1,5 +1,5 @@
 import { Scenes } from "telegraf";
-import { postSupply } from "../controllers/WildberriesController.js";
+import { deleteSupply, postSupply } from "../controllers/WildberriesController.js";
 import { next } from "../utilities/Markup.js";
 
 export const createSupply = new Scenes.BaseScene("createSupply");
@@ -22,6 +22,10 @@ createSupply.enter(async (ctx) => {
         })
 
         createSupply.hears('Назад', async (ctx) => {
+            if(ctx.state.supplyId) {
+                await deleteSupply(ctx.state.supplyId);
+            };
+
             await ctx.scene.enter('main');
         })
         
